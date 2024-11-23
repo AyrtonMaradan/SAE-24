@@ -1,0 +1,99 @@
+    /* CSS pour le bandeau horizontal */
+    .navbar {
+      background-color: #f2f2f2;
+      overflow: hidden;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+      font-weight: bold;
+      border: none;
+      outline: none;
+      color: #333;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #ddd;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      float: none;
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .table-container {
+      margin-bottom: 20px;
+    }
+
+    .table-container h2 {
+      clear: both;
+    }
+
+    .block {
+      float: left;
+      vertical-align: top;
+      width: 260px;
+      height: 260px;
+      margin: 5px;
+      background-color: #f2f2f2;
+      padding: 10px;
+    }
+
+    .item-content {
+      margin-bottom: 10px;
+    }
+
+    .item-buttons a {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #f2f2f2;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+    }
+    
+
+/* Thermometer column and text */

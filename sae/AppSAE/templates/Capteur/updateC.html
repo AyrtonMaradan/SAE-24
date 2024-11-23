@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>Update Capteur</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <form method="post" action="/appsae/Capteur/traitementupdateC/{{id_capteur}}">
+    {% csrf_token %}
+    {{ form.endroit }}
+      <input type="submit" value="envoyer les données"\>
+  </form>
+<div class="item-buttons">
+<a href="/appsae">Retour</a>
+</div>
+</html>

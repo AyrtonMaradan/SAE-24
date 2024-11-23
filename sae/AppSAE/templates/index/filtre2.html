@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>index</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+{% for l in filtre2 %}
+               <div class="block">
+              <div class="item-content">
+              <p><strong>date:</strong> {{ l.date }}</p>
+              <p><strong>Temperature:</strong> {{ l.temp }} °</p>
+
+              </div>
+              <div class="item-buttons">
+              <!--  <a href="Description/updateD/{{ l.id }}/">Mise à jour</a> -->
+                <a href="Description/deleteD/{{ l.id }}/">Supprimer</a>
+                <a href="Description/csv">Génération d'un csv</a>
+
+              </div>
+            </div>
+        {% endfor %}
+      </ol>
+    </div>
+<a href="/appsae">Sans Filtre</a>
+</body>
+</html>

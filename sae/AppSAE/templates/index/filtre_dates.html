@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Résultat du Filtrage des Dates</title>
+</head>
+<body>
+  <h1>Résultat du Filtrage des Dates</h1>
+  <p>Période sélectionnée : DATE {{ start_date }} {{ start_time}} - {{ end_date }} {{ end_time }}  </p>
+
+  <ul>
+    {% for l in descriptions %}
+               <div class="block">
+              <div class="item-content">
+              <p><strong>date:</strong> {{ l.date }}</p>
+              <p><strong>Heure:</strong> {{ l.time }}</p>
+
+              </div>
+              <div class="item-buttons">
+              <!--  <a href="Description/updateD/{{ l.id }}/">Mise à jour</a> -->
+                <a href="Description/deleteD/{{ l.id }}/">Supprimer</a>
+                <a href="Description/csv">Génération d'un csv</a>
+
+              </div>
+            </div>
+    {% empty %}
+      <li>Aucune description trouvée pour la période sélectionnée.</li>
+    {% endfor %}
+  </ul>
+<a href="/appsae">Sans Filtre</a>
+</body>
+</html>

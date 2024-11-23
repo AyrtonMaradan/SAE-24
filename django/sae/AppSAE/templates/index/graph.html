@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Graph</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+<body>
+<canvas id="temperatureChart"></canvas>
+
+    <script>
+      var temperatureData = {{data}};
+
+      var timeLabels = Object.keys(temperatureData).slice(-50);
+      var temperatureValues = Object.values(temperatureData).slice(-50);
+
+      var ctx = document.getElementById('temperatureChart').getContext('2d');
+      var chart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: timeLabels,
+              datasets: [{
+                  label: 'Température',
+                  data: temperatureValues,
+                  backgroundColor: 'rgba(0, 123, 255, 0.3)', // Couleur de fond de la ligne du graphique
+                  borderColor: 'rgba(0, 123, 255, 1)', // Couleur de la ligne du graphique
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              responsive: true,
+              scales: {
+                  x: {
+                      title: {
+                          display: true,
+                          text: 'Temps (minutes)'
+                      }
+                  },
+                  y: {
+                      title: {
+                          display: true,
+                          text: 'Température'
+                      }
+                  }
+              }
+          }
+      });
+  </script>
+<a href="/appsae">Sans Filtre</a>
+
+</body>
+</html>

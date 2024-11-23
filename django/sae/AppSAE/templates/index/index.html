@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>index</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <div class="navbar">
+    <a href="Description/createD/">Ajouter une Description</a>
+    <a href="Capteur/createC/">Ajout de de Capteur</a>
+  </div>
+
+ <div class="content">
+    <div class="table-container">
+      <h2>Description disponible</h2>
+      <ol>
+        {% for l in liste %}
+            <div class="block">
+              <div class="item-content">
+                {%if l.id_capteur == B8A5F3569EFF%}
+                  <p><strong>Capteur :</strong> Séjour</p>
+                {%elif l.id_capteur == A72E3F6B79BB%}
+                  <p><strong>Capteur :</strong> Chambre</p>
+                {%endif%}
+              <p><strong>date:</strong> {{ l.date }}</p>
+              <p><strong>Temperature:</strong> {{ l.temp }} °</p>
+              <p><strong>Heure:</strong> {{ l.time }}</p>
+
+
+              </div>
+              <div class="item-buttons">
+              <!--  <a href="Description/updateD/{{ l.id }}/">Mise à jour</a> -->
+                <a href="Description/deleteD/{{ l.id }}/">Supprimer</a>
+                <a href="Description/csv">Génération d'un csv</a>
+
+              </div>
+            </div>
+        {% endfor %}
+      </ol>
+    </div>
+
+
+    <div class="table-container">
+      <h2>Capteur en cours </h2>
+      <ol>
+        {% for l in liste2 %}
+            <div class="block">
+              <div class="item-content">
+          <!--       {% if id_capteur_edit %}
+                                    <p><span class="alias">{{ l.id_capteur_edit }}</span></p>
+                  {% else %}
+              <p><strong>Nom:</strong> {{ l.id_capteur }} </p>
+                  {% endif %} -->
+                  <p><strong>Nom:</strong> {{ l.id_capteur }} </p>
+
+              </div>
+              <div class="item-buttons">
+                <a href="Capteur/updateC/{{ l.id_capteur }}/">Mise à jour</a>
+                <a href="Capteur/deleteC/{{ l.id_capteur }}/">Supprimer</a>
+                </div>
+            </div>
+        {% endfor %}
+      </ol>
+    </div>
+<h2> FILTRE </h2>
+     <h3>TEMPERATURE</h3>
+        <a href="/appsae/filtre2"> ICI </a>
+     <h3>DATE</h3>
+
+  <form method="GET" action="/appsae/filtre-dates/">
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date">
+
+    <label for="start_time">Start Time:</label>
+    <input type="time" id="start_time" name="start_time">
+
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date">
+
+    <label for="end_time">End Time:</label>
+    <input type="time" id="end_time" name="end_time">
+
+    <button type="submit">Filtrer</button>
+
+  </form>
+ </div>
+  <form method="GET" action="{% url 'rechercher_capteurs' %}">
+    <input type="text" name="id_capteur" placeholder="ID Capteur" value="{{ id_capteur }}">
+    <input type="submit" value="Rechercher">
+</form>
+
+<form method="GET" action="{% url 'filtrer_capteurs' %}">
+    <input type="text" name="id_capteur" placeholder="ID Capteur" value="{{ id_capteur }}">
+    <input type="date" name="start_date" value="{{ start_date }}">
+    <input type="time" name="start_time" value="{{ start_time }}">
+    <input type="date" name="end_date" value="{{ end_date }}">
+    <input type="time" name="end_time" value="{{ end_time }}">
+    <input type="submit" value="Filtrer">
+
+</form>
+<a href="graph/">Graphique</a>
+</body>
+
+</html>

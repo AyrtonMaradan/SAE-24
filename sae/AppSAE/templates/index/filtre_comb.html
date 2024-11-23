@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for capteur in capteurs %}
+    <p>{{ capteur }}</p>
+{% empty %}
+    <p>Aucun capteur trouvé.</p>
+{% endfor %}
+
+{% for donnee in donnees_table_externe %}
+    <p>Date: {{ donnee.date }}, Heure: {{ donnee.time }}, {{ donnee.id_capteur }} </p>
+{% empty %}
+    <p>Aucune donnée trouvée.</p>
+{% endfor %}
+
+<a href="/appsae">Sans Filtre</a>
+
+</body>
+</html>

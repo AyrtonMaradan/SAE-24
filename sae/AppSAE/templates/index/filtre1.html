@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>index</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<form action="{% url 'rechercher_capteurs' %}" method="GET">
+    <input type="text" name="id_capteur" value="{{ id_capteur }}">
+    <button type="submit">Rechercher</button>
+</form>
+
+{% if capteurs %}
+    <h2>Résultats de la recherche :</h2>
+    {% for capteur in capteurs %}
+        <h2>{{ capteur.id_capteur }}</h2>
+        {% if capteur.description_set.all %}
+            <ul>
+            {% for donnee in capteur.description_set.all %}
+                <li>
+                    <p>{{ donnee.date }}</p>
+                    <p>{{ donnee.temp }}</p>
+                    <p>{{ donnee.endroit }}</p>
+                    <!-- Affichez les autres champs de votre table externe ici -->
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucune donnée disponible pour ce capteur.</p>
+        {% endif %}
+    {% empty %}
+        <p>Aucun capteur trouvé.</p>
+    {% endfor %}
+{% endif %}
+
+<a href="/appsae">Sans Filtre</a>
+</body>
+</html>
